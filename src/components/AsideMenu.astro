@@ -3,6 +3,7 @@ import HomeIcon from '@/icons/Home.astro';
 import LibraryIcon from '@/icons/Library.astro';
 import SearchIcon from '@/icons/Search.astro';
 import SideMenuItem from './SideMenuItem.astro';
+import SideMenuCard from './SideMenuCard.astro';
 
 import { playlists } from '@/lib/data';
 ---
@@ -28,6 +29,8 @@ import { playlists } from '@/lib/data';
         <LibraryIcon />
         Tu biblioteca
       </SideMenuItem>
+
+      {playlists.map(playlist => <SideMenuCard playlist={playlist} />)}
     </ul>
   </div>
 </nav>
