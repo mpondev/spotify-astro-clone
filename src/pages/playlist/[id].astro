@@ -1,8 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import PlayListItemCard from '@/components/PlayListItemCard.astro';
 
-import { playlists } from '@/lib/data';
+import { allPlaylists, playlists, songs } from '@/lib/data';
+
+const { id } = Astro.params;
+
+const playlist = allPlaylists.find(playlist => playlist.id === id);
 ---
 
 <Layout title="Spotify Clone">
