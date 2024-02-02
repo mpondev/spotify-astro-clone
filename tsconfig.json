@@ -1,19 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "/Users/imac-mario/Code/Astro/spotify-astro-clone",
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/components": [
-        "src/components/*"
-      ],
-      "@/icons": [
-        "src/icons/*"
-      ],
-      "@/lib": [
-        "src/lib/*"
-      ]
+      "@/*": ["src/*"],
+      "@/components": ["src/components/*"],
+      "@/icons": ["src/icons/*"],
+      "@/lib": ["src/lib/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
