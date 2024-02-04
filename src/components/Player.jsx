@@ -28,7 +28,7 @@ export const Play = ({ className }) => (
   </svg>
 );
 
-export const VolumeSilence = () => (
+export const VolumeSilenced = () => (
   <svg
     fill="currentColor"
     role="presentation"
@@ -36,6 +36,7 @@ export const VolumeSilence = () => (
     width="16"
     aria-hidden="true"
     aria-label="Volumen apagado"
+    id="volume-icon"
     viewBox="0 0 16 16"
   >
     <path d="M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06z"></path>
@@ -43,7 +44,40 @@ export const VolumeSilence = () => (
   </svg>
 );
 
-export const Volume = () => (
+// 0.1 < volume < 0.33
+export const VolumeLow = () => (
+  <svg
+    fill="currentColor"
+    role="presentation"
+    height="16"
+    width="16"
+    aria-hidden="true"
+    aria-label="Volumen bajo"
+    id="volume-icon"
+    viewBox="0 0 16 16"
+  >
+    <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z"></path>
+  </svg>
+);
+
+// 0.33 < volume < 0.66
+export const VolumeMed = () => (
+  <svg
+    fill="currentColor"
+    role="presentation"
+    height="16"
+    width="16"
+    aria-hidden="true"
+    aria-label="Volumen medio"
+    id="volume-icon"
+    viewBox="0 0 16 16"
+  >
+    <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a2.999 2.999 0 0 1 0 5.175v1.649z"></path>
+  </svg>
+);
+
+// 0.66 < volume < 1
+export const VolumeHigh = () => (
   <svg
     fill="currentColor"
     role="presentation"
@@ -146,7 +180,15 @@ const VolumeControl = () => {
         className="opacity-70 hover:opacity-100 transition"
         onClick={handleVolume}
       >
-        {isVolumeSilenced ? <VolumeSilence /> : <Volume />}
+        {isVolumeSilenced ? (
+          <VolumeSilenced />
+        ) : volume < 0.33 ? (
+          <VolumeLow />
+        ) : volume < 0.66 ? (
+          <VolumeMed />
+        ) : (
+          <VolumeHigh />
+        )}
       </button>
 
       <Slider
